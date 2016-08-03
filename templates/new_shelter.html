@@ -1,0 +1,38 @@
+<html>
+
+<head>
+<link rel=stylesheet type=text/css href="{{url_for('static', filename='styles.css')}}">
+</head>
+
+<body>
+
+<h2>Add new Shelter?</h2><br>
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul>
+{% for message in messages %}
+	<li><strong> {{ message }} </strong></li>
+{% endfor %}
+</ul>
+{% endif%}
+{% endwith %}
+
+<form action='/shelters/new' method='POST'>
+<p>
+<table style='width:0%'>
+<tr><td>Name:</td> <td><input type='text' size='30' name='name'></td></tr>
+<tr><td>Address:</td> <td><input type='text' size='30' name='address'></td></tr>
+<tr><td>City:</td> <td><input type='text' size='30' name='city'></td></tr>
+<tr><td>State:</td> <td><input type='text' size='30' name='state'></td></tr>
+<tr><td>Zip code:</td> <td><input type='text' size='30' name='zipCode'></td></tr>
+<tr><td>Website:</td> <td><input type='text' size='30' name='webSite'></td></tr> 
+</table>
+<input type='submit' value='Add'>
+</p>
+<a href='/'>Cancel</a>
+</form>
+
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<html>
+
+<head>
+<link rel=stylesheet type=text/css href="{{url_for('static', filename='styles.css')}}">
+</head>
+
+<body>
+
+<h2>Edit shelter {{shelter.name}}?</h2>
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul>
+{% for message in messages %}
+	<li><strong> {{ message }} </strong></li>
+{% endfor %}
+</ul>
+{% endif%}
+{% endwith %}
+
+<form action="{{url_for('editShelter', shelter_id=shelter.id)}}" method='POST'>
+<p>
+<table style='width:0%'>
+<tr><td>Name:</td> <td><input type='text' size='30' name='name' value='{{shelter.name}}'></td></tr>
+<tr><td>Address:</td> <td><input type='text' size='30' name='address' value='{{shelter.address}}'></td></tr>
+<tr><td>City:</td> <td><input type='text' size='30' name='city' value='{{shelter.city}}'></td></tr>
+<tr><td>State:</td> <td><input type='text' size='30' name='state' value='{{shelter.state}}'></td></tr>
+<tr><td>Zip code:</td> <td><input type='text' size='30' name='zipCode' value='{{shelter.zipCode}}'></td></tr>
+<tr><td>Website:</td> <td><input type='text' size='30' name='webSite' value='{{shelter.website}}'></td></tr> 
+</table>
+<input type='submit' value='Edit'>
+</p>
+<a href='/'>Cancel</a>
+</form>
+
+</body>
+
+</html>
